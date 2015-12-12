@@ -20,17 +20,14 @@ public class InputClient2 {
 			Scanner input = new Scanner(socket.getInputStream());
 			PrintWriter output = new PrintWriter(socket.getOutputStream(),true);
 			Scanner userEntry = new Scanner(System.in);
-			String message, response;
+			String message;
 			do{
 				System.out.print("Enter message (QUIT to exit); ");
 				message = userEntry.nextLine();
-				String ressage = message.replaceAll("[-+.^:;_~!`¨'#¤%&/()=?@£$€{}|*\"\\[\\]<>½§,\\\\]","");
-				message = ressage.toLowerCase();
-				output.println(message);
-				response = input.nextLine();
-				System.out.println("\nSERVER> "+ response);
-				System.out.println("\n Parts ");
-				System.out.println(message);
+				String ressage = message.replaceAll("[-+.^:;_~!`¨'#¤%&/()=?@£$€{}|*\"\\[\\]<>½§,\\\\]",""); //Replaces all special characters with nothing
+				message = ressage.toLowerCase(); //turns all uppercase letters into lowercase
+				output.println(message); //sends the string as output
+				System.out.println(message); //prints the send message for the user
 				
 				
 			}while (!message.equals("quit"));
