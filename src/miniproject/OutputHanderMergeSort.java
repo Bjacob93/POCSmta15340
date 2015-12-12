@@ -1,6 +1,6 @@
 package miniproject;
 
-public class OutputHandlerMergeSort {
+public class OutputHanderMergeSort {
 
 	private int[] numbers;
 	private int[] helper;
