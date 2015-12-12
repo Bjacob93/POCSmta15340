@@ -1,6 +1,10 @@
 package miniproject;
 
-public class OutputHanderMergeSort {
+import java.io.*;
+import java.net.*;
+import java.util.*;
+
+public class OutputHandlerMergeSort extends Thread {
 
 	private int[] numbers;
 	private String[] strings;
