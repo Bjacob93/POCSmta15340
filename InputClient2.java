@@ -24,7 +24,7 @@ public class InputClient2 {
 			do{
 				System.out.print("Enter message (QUIT to exit); ");
 				message = userEntry.nextLine();
-				String ressage = message.replaceAll("[-+.^:#¤%&/()=?@£$€6{}|*\\\"<>½§,]","");
+				String ressage = message.replaceAll("[-+.^:;_~!`¨'#¤%&/()=?@£$€{}|*\"\\[\\]<>½§,\\\\]","");
 				message = ressage.toLowerCase();
 				output.println(message);
 				response = input.nextLine();
