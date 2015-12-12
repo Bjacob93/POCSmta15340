@@ -24,7 +24,8 @@ private static void accessServer(){
     try {
         link = new Socket(host, PORT);
         Scanner input = new Scanner(link.getInputStream());
-        //PrintWriter output = new PrintWriter(link.getOutputStream(), true);
+        PrintWriter output = new PrintWriter(link.getOutputStream(), true);
+        output.print(false);
         System.out.print(input);
     }
     catch (IOException ioEx) {
