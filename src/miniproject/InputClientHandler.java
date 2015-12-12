@@ -3,12 +3,12 @@ import java.io.PrintWriter;
 import java.net.Socket;
 import java.util.Scanner;
 
-public class inputClientHandler extends Thread{
+public class InputClientHandler extends Thread{
 	private Socket client;
 	private Scanner input;
 	private PrintWriter output;
 	
-	public inputClientHandler(Socket socket){
+	public InputClientHandler(Socket socket){
 		client = socket;
 		try{
 			input = new Scanner(client.getInputStream());
