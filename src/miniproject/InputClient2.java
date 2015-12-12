@@ -20,6 +20,7 @@ public class InputClient2 {
 			Scanner input = new Scanner(socket.getInputStream());
 			PrintWriter output = new PrintWriter(socket.getOutputStream(),true);			
 			Scanner userEntry = new Scanner(System.in);
+			output.print(true);
 			String message;
 			do{
 				System.out.print("Enter message (QUIT to exit); ");
