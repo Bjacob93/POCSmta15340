@@ -8,7 +8,8 @@ public class MultiServer {
     private static ServerSocket serverSocket;
     private static final int PORT = 1234;
     
-    public static void main(String[] args) throws IOException{
+    @SuppressWarnings("resource")
+	public static void main(String[] args) throws IOException{
     	
     	Scanner input;
     	
@@ -25,16 +26,17 @@ public class MultiServer {
             Socket client = serverSocket.accept();
             System.out.println("\nClient accepted\n");
             input = new Scanner(client.getInputStream());
-            String IOSwitch = input.nextLine();
-            input.close();
+            boolean IOSwitch = input.nextBoolean();
+           // input.close();
             
-            if(IOSwitch == "0"){
+            
+            if(IOSwitch == true){
             	
             	System.out.println("Inputclient detected");
             	InputClientHandler handler = new InputClientHandler(client);
                 handler.start();
             	
-            } else if (IOSwitch == "1"){
+            } else if (IOSwitch == false){
             	
             	System.out.println("Outputclient detected");
             	OutputHandlerMergeSort handler = new OutputHandlerMergeSort(client);

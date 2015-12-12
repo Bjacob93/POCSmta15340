@@ -12,15 +12,17 @@ public class InputClient2 {
 	
 	private static InetAddress host;
 	private static final int PORT = 1234;
-	
+		
+
 	private static void sendMessage(){
 		Socket socket = null;
+		String bool = "true";
 		try{
 			socket = new Socket(host, PORT);
 			Scanner input = new Scanner(socket.getInputStream());
 			PrintWriter output = new PrintWriter(socket.getOutputStream(),true);			
 			Scanner userEntry = new Scanner(System.in);
-			output.print(true);
+			output.print(bool);
 			String message;
 			do{
 				System.out.print("Enter message (QUIT to exit); ");

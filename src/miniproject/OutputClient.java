@@ -3,7 +3,7 @@ import java.io.*;
 import java.net.*;
 import java.util.*;
 
-public class OutputClient {
+public class OutputClient extends Thread {
 	
 	private static InetAddress host;
 	private static final int PORT = 1235;
@@ -19,13 +19,15 @@ public class OutputClient {
     }
 
 private static void accessServer(){
-    Socket link = null;
+	
+	Socket link = null;
+    System.out.println("OutputClient called");
     
     try {
         link = new Socket(host, PORT);
         Scanner input = new Scanner(link.getInputStream());
         PrintWriter output = new PrintWriter(link.getOutputStream(), true);
-        output.print(false);
+        output.print("false");
         System.out.print(input);
     }
     catch (IOException ioEx) {
