@@ -30,11 +30,13 @@ public class MultiServer {
             
             if(IOSwitch == "0"){
             	
+            	System.out.println("Inputclient detected");
             	InputClientHandler handler = new InputClientHandler(client);
                 handler.start();
             	
             } else if (IOSwitch == "1"){
             	
+            	System.out.println("Outputclient detected");
             	OutputHandlerMergeSort handler = new OutputHandlerMergeSort(client);
             	handler.start();
             }
