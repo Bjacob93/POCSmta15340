@@ -3,7 +3,9 @@ package miniproject;
 public class OutputHanderMergeSort {
 
 	private int[] numbers;
-	private int[] helper;
+	private String[] strings;
+	private int[] numbersHelper;
+	private String[] stringHelper;
 	
 	private int number;
 	
@@ -11,7 +13,7 @@ public class OutputHanderMergeSort {
 		
 		this.numbers = values;
 		number = values.length;
-		this.helper = new int[number];
+		this.numbersHelper = new int[number];
 		mergeSort(0, number - 1);		
 	}
 	
@@ -29,7 +31,7 @@ public class OutputHanderMergeSort {
 	private void merge(int low, int middle, int high){
 		
 		for(int i = low;i <= high; i++){
-			helper[i] = numbers[i];
+			numbersHelper[i] = numbers[i];
 		}
 		
 		int i = low;
@@ -38,17 +40,17 @@ public class OutputHanderMergeSort {
 		
 		while(i <= middle && j <= high){
 			
-			if (helper[i] <= helper[j]){
-				numbers[k] = helper[i];
+			if (numbersHelper[i] <= numbersHelper[j]){
+				numbers[k] = numbersHelper[i];
 				i++;
 			} else {
-				numbers[k] = helper[j];
+				numbers[k] = numbersHelper[j];
 				j++;
 			}
 			k++;   
 		}
 		while(i <= middle){
-			numbers[k] = helper[i];
+			numbers[k] = numbersHelper[i];
 			k++;
 			j++;
 		}
