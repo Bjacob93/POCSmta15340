@@ -25,15 +25,15 @@ public class MultiServer {
             Socket client = serverSocket.accept();
             System.out.println("\nClient accepted\n");
             input = new Scanner(client.getInputStream());
-            boolean IOSwitch = input.nextBoolean();
+            String IOSwitch = input.nextLine();
             input.close();
             
-            if(IOSwitch == true){
+            if(IOSwitch == "0"){
             	
             	InputClientHandler handler = new InputClientHandler(client);
                 handler.start();
             	
-            } else if (IOSwitch){
+            } else if (IOSwitch == "1"){
             	
             	OutputHandlerMergeSort handler = new OutputHandlerMergeSort(client);
             	handler.start();
