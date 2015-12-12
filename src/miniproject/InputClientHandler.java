@@ -20,19 +20,19 @@ public class InputClientHandler extends Thread{
 		}	
 	}
 	public void run(){
-		String recived;
+		String received;
 		String[] splitRecived;
 		do{
-		recived = input.nextLine();
+			received = input.nextLine();
 		
-		splitRecived = recived.split("\\s+");
+		splitRecived = received.split("\\s+");
 		
 		for (int i = 0; i < splitRecived.length; i++)
 		{
 			String word = splitRecived[i];
 			output.println(word);
 		}
-	}while(!recived.equals("quit"));
+	}while(!received.equals("quit"));
 		try{
 		if(client!=null){
 			System.out.println("Closing connection");
