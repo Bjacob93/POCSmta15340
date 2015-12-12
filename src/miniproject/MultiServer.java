@@ -21,8 +21,9 @@ public class MultiServer {
         }
 
         do{
+        	System.out.println("Server is running");
             Socket client = serverSocket.accept();
-            System.out.println("\nNew client accepted.\n");
+            System.out.println("\nClient accepted\n");
             input = new Scanner(client.getInputStream());
             boolean IOSwitch = input.nextBoolean();
             input.close();
@@ -34,8 +35,8 @@ public class MultiServer {
             	
             } else if (IOSwitch){
             	
-            	OutputHandlerMergeSort handler = OutputHandlerMergeSort(client);
-            	handler.start();       	
+            	OutputHandlerMergeSort handler = new OutputHandlerMergeSort(client);
+            	handler.start();
             }
 
         } while(true);

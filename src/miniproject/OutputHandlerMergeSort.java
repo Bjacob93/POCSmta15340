@@ -5,6 +5,19 @@ import java.net.*;
 import java.util.*;
 
 public class OutputHandlerMergeSort extends Thread {
+	
+	private Socket client;
+	private PrintWriter output;
+	
+	OutputHandlerMergeSort(Socket client){
+
+		try{
+			output = new PrintWriter(client.getOutputStream(), true);	
+		} catch(IOException ioEx){
+			
+		}
+		
+	}
 
 	private int[] numbers;
 	private String[] strings;
