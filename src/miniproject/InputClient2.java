@@ -18,7 +18,7 @@ public class InputClient2 {
 		try{
 			socket = new Socket(host, PORT);
 			Scanner input = new Scanner(socket.getInputStream());
-			PrintWriter output = new PrintWriter(socket.getOutputStream(),true);
+			PrintWriter output = new PrintWriter(socket.getOutputStream(),true);			
 			Scanner userEntry = new Scanner(System.in);
 			String message;
 			do{
@@ -27,7 +27,7 @@ public class InputClient2 {
 				String ressage = message.replaceAll("[-+.^:;_~!`¨'#¤%&/()=?@£$€{}|*\"\\[\\]<>½§,\\\\]",""); //Replaces all special characters with nothing
 				message = ressage.toLowerCase(); //turns all uppercase letters into lowercase
 				output.println(message); //sends the string as output
-				System.out.println(message); //prints the send message for the user
+			//	System.out.println(message); //prints the send message for the user
 				
 				
 			}while (!message.equals("quit"));
