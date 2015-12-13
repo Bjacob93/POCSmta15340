@@ -4,24 +4,19 @@ import java.io.*;
 import java.net.*;
 import java.util.*;
 
-public class OutputClientHandler extends Thread {
-
+public class OutputHandlerMergeSort extends Thread {
+	
 	private Socket client;
-	private Scanner input;
 	private PrintWriter output;
 	
-	public OutputClientHandler(Socket socket){
-		System.out.println("OutputClientHandler called");
-		client = socket;
-		try{
-			input = new Scanner(client.getInputStream());
-			output = new PrintWriter(client.getOutputStream(), true);
-			
+	OutputHandlerMergeSort(Socket client){
 
+		try{
+			output = new PrintWriter(client.getOutputStream(), true);	
+		} catch(IOException ioEx){
 			
-		}catch(IOException ioEx){
-			ioEx.printStackTrace();
-		}		
+		}
+		
 	}
 
 	private int[] numbers;

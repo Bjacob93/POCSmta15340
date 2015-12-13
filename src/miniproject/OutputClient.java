@@ -1,18 +1,17 @@
 package miniproject;
-
 import java.io.*;
 import java.net.*;
 import java.util.*;
 
-public class OutputClient {
+public class OutputClient extends Thread {
 	
 	private static InetAddress host;
-	private static final int PORT = 1234;
-	
+	private static final int PORT = 1235;
 	public static void main(String[] args) {
         try {
             host = InetAddress.getLocalHost();
-        }catch (UnknownHostException uhEx) {
+        }
+        catch (UnknownHostException uhEx) {
             System.out.println("Host not found!");
             System.exit(1);
         }
@@ -20,15 +19,16 @@ public class OutputClient {
     }
 
 private static void accessServer(){
+	
 	Socket link = null;
-	String bool = "false";
+    System.out.println("OutputClient called");
     
     try {
         link = new Socket(host, PORT);
         Scanner input = new Scanner(link.getInputStream());
         PrintWriter output = new PrintWriter(link.getOutputStream(), true);
-		Scanner userEntry = new Scanner(System.in);
-        output.print(bool);
+        output.print("false");
+        System.out.print(input);
     }
     catch (IOException ioEx) {
         ioEx.printStackTrace();
