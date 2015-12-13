@@ -7,8 +7,6 @@ import java.util.*;
 
 public class OutputClientHandler extends Thread {
 	private Socket client;
-	private PrintWriter output;
-	
 	
 	private static LinkedList<String> strings = MultiServer.strings;
 	private static LinkedList<Integer> numbers = MultiServer.numbers;
