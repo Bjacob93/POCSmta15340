@@ -5,7 +5,8 @@ import java.net.*;
 import java.util.*;
 
 public class OutputHandler extends Thread{
-
+    private static LinkedList<String> strings = multiserver.strings;
+	private static LinkedList<Integer> numbers = multiserver.numbers;
     private static ServerSocket serverSocket;
     private static final int PORT = 1234;
     
@@ -28,67 +29,23 @@ public class OutputHandler extends Thread{
         Socket link = null;
         try {
             link = serverSocket.accept();
-            Scanner input = new Scanner(link.getInputStream());
             PrintWriter output = new PrintWriter(link.getOutputStream(), true);
-            String message = input.nextLine();
-    		String[] outMess = new String[0];
-    		String[] memoryS = new String[0];
-    		int[] memoryI = new int[0];
-    		int size = 1;
-    		int[] repeats = {1};
-    		boolean contains = false;
-    		
-    		int swap;
-    		String swapS;
-    		while(!message.equals("/close")) {
-    			contains = false;
-                System.out.println("Message received.");
-                String[] splitMess = message.split(" ");
-                for(int i = 0; i < splitMess.length; i++){
-                	for(int j = 0; j < outMess.length; j++){
-                		if(splitMess[i].equals(outMess[j])){
-                			contains = true;
-                			repeats[j] += 1;
-                			System.out.println("is already in: " + splitMess[i] + repeats[j]);
-                		}
-                	}
-                	if(!contains){
-                		memoryS = new String[size];
-                		memoryI = new int[size];
-                		for(int k = 0; k < outMess.length; k++){
-                			memoryS[k] = outMess[k];
-                			memoryI[k] = repeats[k];
-                		}            
-                		repeats = new int[size];
-                		outMess = new String[size];            		
-                		System.out.println("size of string: " + outMess.length);
-                		for(int k = 0; k < memoryS.length; k++){
-                			outMess[k] = memoryS[k];
-                			repeats[k] = memoryI[k];
-                		}
-                		outMess[size - 1] = splitMess[i];
-                		size++;
-                	}
-                }
-                for (int i = 0; i < repeats.length - 1; i++){
-                	for(int j = 0; j < repeats.length - i - 1; j++){
-                		if(repeats[j] < repeats[j+1]){
-                			//swap strings
-                			swapS = outMess[j];
-                			outMess[j] = outMess[j+1];
-                			outMess[j+1] = swapS;
-                			//swap integers
-                			swap = repeats[j];
-                			repeats[j] = repeats[j+1];
-                			repeats[j+1] = swap;
-                		}
-                	}
-                }
-                message = input.nextLine();
-    		}
-    		for(int i = 0; i < outMess.length; i++){
-    			repeats[i] += 1;
-            	output.print(outMess[i] + " " + repeats[i] + ", ");
+            for (int i = 0; i < numbers.size() - 1; i++){
+            	for(int j = 0; j < numbers.size() - i - 1; j++){
+                	if(repeats[j] < repeats[j+1]){
+                		//swap strings
+                		swapS = strings.get(j);
+                		strings.set.(j, strings.get(j+1));
+                		strings.set(j+1, swapS);
+            			//swap integers
+            			swap = numbers.get(j);
+            			numbers.set(j, numbers.get(j+1));
+            			numbers.set(j+1, swap);
+            		}
+            	}
+            }
+    		for(int i = 0; i < strings.size(); i++){
+            	output.print(strings[i] + " " + numbers[i] + ", ");
             }
             input.close();
         }
