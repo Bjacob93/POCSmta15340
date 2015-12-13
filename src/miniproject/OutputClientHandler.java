@@ -15,7 +15,7 @@ public class OutputClientHandler extends Thread {
 	private String[] stringsHelper;
 	
 	
-	public OutputClientHandler(Socket socket, LinkedList<String> stringsCopy, LinkedList<Integer> numbersCopy){
+	public OutputClientHandler(Socket socket){
 		client = socket;
 	
 		System.out.println("Output handler called");
