@@ -21,8 +21,6 @@ public class OutputClient extends Thread {
 private static void accessServer(){
 	
 	Socket link = null;
-    System.out.println("OutputClient called");
-    
     try {
         link = new Socket(host, PORT);
         Scanner input = new Scanner(link.getInputStream());

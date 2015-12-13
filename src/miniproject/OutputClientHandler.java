@@ -4,13 +4,14 @@ import java.io.*;
 import java.net.*;
 import java.util.*;
 
-public class OutputHandlerMergeSort extends Thread {
-	
+public class OutputClientHandler extends Thread {
 	private Socket client;
+	private Scanner input;
 	private PrintWriter output;
 	
-	OutputHandlerMergeSort(Socket client){
+	public OutputClientHandler(Socket socket){
 
+		client = socket;
 		try{
 			output = new PrintWriter(client.getOutputStream(), true);	
 		} catch(IOException ioEx){

@@ -11,7 +11,7 @@ public class InputClientHandler extends Thread{
 	private PrintWriter output;
 	
 	public InputClientHandler(Socket socket){
-		System.out.println("InputClientHandler called");
+
 		client = socket;
 		try{
 			input = new Scanner(client.getInputStream());
