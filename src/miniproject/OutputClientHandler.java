@@ -11,6 +11,8 @@ public class OutputClientHandler extends Thread {
 	
 	private static LinkedList<String> strings = MultiServer.strings;
 	private static LinkedList<Integer> numbers = MultiServer.numbers;
+	LinkedList<String> stringsCopy = (LinkedList<String>)strings.clone();
+	LinkedList<Integer> numbersCopy = (LinkedList<Integer>)numbers.clone();
 	private int[] numbersHelper;
 	private String[] stringsHelper;
 	
