@@ -8,7 +8,6 @@ public class MultiServer {
     private static ServerSocket serverSocket;
     private static final int PORT = 1234;
     
-    @SuppressWarnings("resource")
 	public static void main(String[] args) throws IOException{
     	
     	Scanner input;
@@ -20,6 +19,8 @@ public class MultiServer {
             System.out.println("\nUnable to set up port!");
             System.exit(1);
         }
+        
+    	ArrayList<String> words = new ArrayList<String>();
 
         do{
         	System.out.println("Server is running");
@@ -27,7 +28,7 @@ public class MultiServer {
             System.out.println("\nClient accepted\n");
             input = new Scanner(client.getInputStream());
             boolean IOSwitch = input.nextBoolean();
-           // input.close();
+            input.close();
             
             
             if(IOSwitch == true){
@@ -39,7 +40,7 @@ public class MultiServer {
             } else if (IOSwitch == false){
             	
             	System.out.println("Outputclient detected");
-            	OutputHandlerMergeSort handler = new OutputHandlerMergeSort(client);
+            	OutputClientHandler handler = new OutputClientHandler(client);
             	handler.start();
             }
 
