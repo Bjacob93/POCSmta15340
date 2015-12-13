@@ -21,12 +21,9 @@ public class OutputClient extends Thread {
 private static void accessServer(){
 	
 	Socket link = null;
-	String bool = "false";
     try {
         link = new Socket(host, PORT);
         Scanner input = new Scanner(link.getInputStream());
-        PrintWriter output = new PrintWriter(link.getOutputStream(), true);
-        output.print(bool);
         System.out.print(input);
     }
     catch (IOException ioEx) {

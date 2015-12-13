@@ -23,17 +23,19 @@ public class MultiServer {
         }
 
         String clientMessage;
-        boolean IOSwitch = false;
-        
+                
         do{
         	System.out.println("Server is running");
             Socket client = serverSocket.accept();
             System.out.println("\nClient accepted\n");
+            boolean IOSwitch = false;
             input = new Scanner(client.getInputStream());
                    
             if(input.hasNextBoolean()){
             IOSwitch = input.nextBoolean();
             }
+            
+            System.out.println("Switch is now " + IOSwitch);
 
             if(IOSwitch == true){
             	
@@ -50,5 +52,26 @@ public class MultiServer {
 
         } while(true);
     }
+
+
+	@SuppressWarnings("null")
+	public static void collectedWordsOfShiaLabeouf(String input) {
+        LinkedList<String> strings = null;
+        LinkedList<Integer> numbers = null;
+        
+        if(numbers.size() < 1){
+        	numbers.addFirst(1);
+        	strings.addFirst(input);
+        }
+        else {
+        	for(int i = 0; i < numbers.size(); i++){
+        		if(input.equals(strings.get(i))){
+        			numbers.set(i, numbers.get(i) + 1);
+        			break;
+        		}
+        	}
+        }      
+        
+	}
 
 }

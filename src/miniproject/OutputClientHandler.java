@@ -11,11 +11,11 @@ public class OutputClientHandler extends Thread {
 	
 
 	public OutputClientHandler(Socket socket){
-		System.out.println("OutputClientHandler called");
 		client = socket;
 		try{
 			input = new Scanner(client.getInputStream());
-			output = new PrintWriter(client.getOutputStream(), true);	
+			output = new PrintWriter(client.getOutputStream(), true);
+			
 		} catch(IOException ioEx){
 			System.out.println("IOException!");
 			ioEx.printStackTrace();
@@ -26,16 +26,13 @@ public class OutputClientHandler extends Thread {
 	private int[] numbers;
 	private String[] strings;
 	private int[] numbersHelper;
-	private String[] stringHelper;
-	
-	private int number;
+	private String[] stringsHelper;
 	
 	public void sort(int[] values){
 		
 		this.numbers = values;
-		number = values.length;
-		this.numbersHelper = new int[number];
-		mergeSort(0, number - 1);		
+		this.numbersHelper = new int[values.length];
+		mergeSort(0, values.length - 1);
 	}
 	
 	private void mergeSort(int low, int high){
@@ -53,6 +50,7 @@ public class OutputClientHandler extends Thread {
 		
 		for(int i = low;i <= high; i++){
 			numbersHelper[i] = numbers[i];
+			stringsHelper[i] = strings[i];
 		}
 		
 		int i = low;
@@ -63,15 +61,18 @@ public class OutputClientHandler extends Thread {
 			
 			if (numbersHelper[i] <= numbersHelper[j]){
 				numbers[k] = numbersHelper[i];
+				strings[k] = stringsHelper[i];
 				i++;
 			} else {
 				numbers[k] = numbersHelper[j];
+				strings[k] = stringsHelper[j];
 				j++;
 			}
 			k++;   
 		}
 		while(i <= middle){
 			numbers[k] = numbersHelper[i];
+			strings[k] = stringsHelper[i];
 			k++;
 			j++;
 		}
