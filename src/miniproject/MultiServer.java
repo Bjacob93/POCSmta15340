@@ -33,6 +33,8 @@ public class MultiServer {
             IOSwitch = input.nextBoolean();
             }
             
+
+
             if(IOSwitch == true){
             	
             	System.out.println("Inputclient detected");
