@@ -17,15 +17,15 @@ public class OutputClientHandler extends Thread {
 	private String[] stringsHelper;
 	
 	
-	public OutputClientHandler(Socket socket){
+	public OutputClientHandler(Socket socket, LinkedList<String> stringsCopy, LinkedList<Integer> numbersCopy){
 		client = socket;
 	
 		System.out.println("Output handler called");
 
-			sort(numbers, strings);
+			sort(numbersCopy, stringsCopy);
 			
-			for(int i = 0; i < numbers.size(); i++){
-				System.out.println(strings.get(i)+ " " + numbers.get(i));
+			for(int i = 0; i < numbersCopy.size(); i++){
+				System.out.println(stringsCopy.get(i)+ " " + numbersCopy.get(i));
 			}
 
 			try{
@@ -44,9 +44,9 @@ public class OutputClientHandler extends Thread {
 	public void sort(LinkedList<Integer> numbers, LinkedList<String> strings){
 		
 
-		this.numbersHelper = new int[MultiServer.numbers.size()];
-		this.stringsHelper = new String[MultiServer.numbers.size()];
-		mergeSort(0, MultiServer.numbers.size() - 1);
+		this.numbersHelper = new int[numbersCopy.size()];
+		this.stringsHelper = new String[numbersCopy.size()];
+		mergeSort(0, numbersCopy.size() - 1);
 	}
 	
 	private void mergeSort(int l, int h){
@@ -63,8 +63,8 @@ public class OutputClientHandler extends Thread {
 	private void merge(int l, int m, int h){{
 				
 		for(int i = l; i <= h; i++){
-			numbersHelper[i] = numbers.get(i);
-			stringsHelper[i] = strings.get(i);
+			numbersHelper[i] = numbersCopy.get(i);
+			stringsHelper[i] = stringsCopy.get(i);
 		}
 		
 		int i = l;
@@ -74,19 +74,19 @@ public class OutputClientHandler extends Thread {
 		while(i <= m && j <= h){
 			
 			if (numbersHelper[i] <= numbersHelper[j]){
-				numbers.set(k, numbersHelper[i]);
-				strings.set(k, stringsHelper[i]);
+				numbersCopy.set(k, numbersHelper[i]);
+				stringsCopy.set(k, stringsHelper[i]);
 				i++;
 			} else {
-				numbers.set(k, numbersHelper[j]);
-				strings.set(k, stringsHelper[j]);
+				numbersCopy.set(k, numbersHelper[j]);
+				stringsCopy.set(k, stringsHelper[j]);
 				j++;
 			}
 			k++;
 		}
 		while(i <= m){
-			numbers.set(k, numbersHelper[i]);
-			strings.set(k, stringsHelper[i]);
+			numbersCopy.set(k, numbersHelper[i]);
+			stringsCopy.set(k, stringsHelper[i]);
 			k++;
 			i++;
 		}

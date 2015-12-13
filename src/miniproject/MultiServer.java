@@ -49,7 +49,7 @@ public class MultiServer {
             } else if (IOSwitch == false){
             	
             	System.out.println("Outputclient detected");
-            	OutputClientHandler handler = new OutputClientHandler(client);
+            	OutputHandler handler = new OutputHandler(client);
             	handler.start();
             }
 
