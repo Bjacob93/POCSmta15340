@@ -34,7 +34,7 @@ public class OutputHandler extends Thread{
             PrintWriter output = new PrintWriter(link.getOutputStream(), true);
             for (int i = 0; i < numbers.size() - 1; i++){
             	for(int j = 0; j < numbers.size() - i - 1; j++){
-                	if(repeats[j] < repeats[j+1]){
+                	if(numbers.get(j) < numbers.get(j+1)){
                 		//swap strings
                 		swapS = strings.get(j);
                 		strings.set.(j, strings.get(j+1));
