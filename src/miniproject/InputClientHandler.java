@@ -40,7 +40,7 @@ public class InputClientHandler extends Thread{
 			client.close();
 		}
 	}catch (IOException ioEx){
-			System.out.println("unable to close connection");
+			System.out.println("Unable to close connection");
 		}
 	}
 

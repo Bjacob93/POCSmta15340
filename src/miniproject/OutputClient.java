@@ -3,7 +3,7 @@ import java.io.*;
 import java.net.*;
 import java.util.*;
 
-public class OutputClient extends Thread {
+public class OutputClient {
 	
 	private static InetAddress host;
 	private static final int PORT = 1234;

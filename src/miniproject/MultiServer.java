@@ -7,7 +7,8 @@ import java.util.*;
 public class MultiServer {
    	private static ServerSocket serverSocket;
     private static final int PORT = 1234;
-       
+    
+    
     @SuppressWarnings("resource")
 	public static void main(String[] args) throws IOException{
     	
@@ -20,8 +21,6 @@ public class MultiServer {
             System.out.println("\nUnable to set up port!");
             System.exit(1);
         }
-
-        String clientMessage;
                 
         do{
         	System.out.println("Server is running");
@@ -34,8 +33,6 @@ public class MultiServer {
             IOSwitch = input.nextBoolean();
             }
             
-            System.out.println("Switch is now " + IOSwitch);
-
             if(IOSwitch == true){
             	
             	System.out.println("Inputclient detected");
@@ -45,7 +42,7 @@ public class MultiServer {
             } else if (IOSwitch == false){
             	
             	System.out.println("Outputclient detected");
-            	OutputClientHandler handler = new OutputClientHandler(client, string, numbers);
+            	OutputClientHandler handler = new OutputClientHandler(client, strings, numbers);
             	handler.start();
             }
 
@@ -53,10 +50,10 @@ public class MultiServer {
     }
     
     
+    private static LinkedList<String> strings = null;
+    private static LinkedList<Integer> numbers = null;
 
 	public static void TheCollectedWordsOfShiaLabeouf(String input) {
-        LinkedList<String> strings = null;
-        LinkedList<Integer> numbers = null;
         
         boolean wordFound = false;
         
@@ -76,6 +73,6 @@ public class MultiServer {
         		numbers.addLast(1);
         		strings.addLast(input);
         	}
-        }      
+        }  
   	}
 }
