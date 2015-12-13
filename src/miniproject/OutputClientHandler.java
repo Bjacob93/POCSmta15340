@@ -24,8 +24,11 @@ public class OutputClientHandler extends Thread {
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 			sort(numbersCopy, stringsCopy);
 =======
+=======
+>>>>>>> parent of 40a2e98... Don't touch. It works now
 =======
 >>>>>>> parent of 40a2e98... Don't touch. It works now
 		try{
