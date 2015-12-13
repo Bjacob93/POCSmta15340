@@ -4,10 +4,14 @@ import java.io.*;
 import java.net.*;
 import java.util.*;
 
+
+
 public class MultiServer {
    	private static ServerSocket serverSocket;
     private static final int PORT = 1234;
     
+    public static  LinkedList<String> strings = new LinkedList<String>();
+    public static  LinkedList<Integer> numbers = new LinkedList<Integer>();
     
     @SuppressWarnings("resource")
 	public static void main(String[] args) throws IOException{
@@ -34,12 +38,15 @@ public class MultiServer {
             }
             
 
-
             if(IOSwitch == true){
             	
             	System.out.println("Inputclient detected");
             	InputClientHandler handler = new InputClientHandler(client);
                 handler.start();
+                if(!strings.isEmpty()){
+                System.out.println(strings.get(0) + " " + strings.size());
+                }
+                
             	
             } else if (IOSwitch == false){
             	
@@ -51,30 +58,4 @@ public class MultiServer {
         } while(true);
     }
     
-    
-    private static LinkedList<String> strings = null;
-    private static LinkedList<Integer> numbers = null;
-
-	public static void TheCollectedWordsOfShiaLabeouf(String input) {
-        
-        boolean wordFound = false;
-        
-        if(numbers.size() < 1){
-        	numbers.addFirst(1);
-        	strings.addFirst(input);
-        }
-        else {
-        	for(int i = 0; i < numbers.size(); i++){
-        		if(input.equals(strings.get(i))){
-        			numbers.set(i, numbers.get(i) + 1);
-        			wordFound = true;
-        			break;
-        		}
-        	}
-        	if(wordFound == false){
-        		numbers.addLast(1);
-        		strings.addLast(input);
-        	}
-        }  
-  	}
 }

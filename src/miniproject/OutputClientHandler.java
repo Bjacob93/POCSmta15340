@@ -9,28 +9,32 @@ public class OutputClientHandler extends Thread {
 	private Socket client;
 	private PrintWriter output;
 	
-
-	public OutputClientHandler(Socket socket, LinkedList<String> strings, LinkedList<Integer> numbers){
+	private static LinkedList<String> strings = MultiServer.strings;
+	private static LinkedList<Integer> numbers = MultiServer.numbers;
+	private int[] numbersHelper;
+	private String[] stringsHelper;
+	
+	
+	public OutputClientHandler(Socket socket, LinkedList<String> stringsCopy, LinkedList<Integer> numbersCopy){
 		client = socket;
-		
+	
+		System.out.println("Output handler called");
+
 		try{
 			output = new PrintWriter(client.getOutputStream(), true);
-			try{
+			
 			sort(numbers, strings);
-
 			
 			for(int i = 0; i < numbers.size(); i++){
-				output.println(strings.get(i) + ": " + numbers.get(i) + ".");
+				System.out.println(strings.get(i)+ " " + numbers.get(i));
 			}
-			} catch(Exception e){
-				System.out.println("The list is empty."); 
-			}
+
 			
 		} catch(IOException ioEx){
-			System.out.println("IOException!");
-			ioEx.printStackTrace();
+		//	System.out.println("IOException!");
+		//	ioEx.printStackTrace();
 		}
-		finally {
+		//finally {
 			try{
 				System.out.println("\n Closing connection...");
 				socket.close();
@@ -40,22 +44,20 @@ public class OutputClientHandler extends Thread {
 			}
 		}
 		
-	}
+//	}
 	
-	LinkedList<Integer> numbers;
-	LinkedList<String> strings;
-	private int[] numbersHelper;
-	private String[] stringsHelper;
-	
+
+		
 	public void sort(LinkedList<Integer> numbers, LinkedList<String> strings){
 		
 
-		this.numbersHelper = new int[numbers.size()];
-		mergeSort(0, numbers.size() - 1);
+		this.numbersHelper = new int[MultiServer.numbers.size()];
+		this.stringsHelper = new String[MultiServer.numbers.size()];
+		mergeSort(0, MultiServer.numbers.size() - 1);
 	}
 	
 	private void mergeSort(int l, int h){
-	
+			
 		if(l < h){
 			int m = l + (h - l) / 2;
 			mergeSort(l, m);
@@ -65,8 +67,8 @@ public class OutputClientHandler extends Thread {
 		
 	}	
 	
-	private void merge(int l, int m, int h){
-		
+	private void merge(int l, int m, int h){{
+				
 		for(int i = l; i <= h; i++){
 			numbersHelper[i] = numbers.get(i);
 			stringsHelper[i] = strings.get(i);
@@ -90,11 +92,14 @@ public class OutputClientHandler extends Thread {
 			k++;
 		}
 		while(i <= m){
-			numbers.set(k, numbersHelper[j]);
+			numbers.set(k, numbersHelper[i]);
 			strings.set(k, stringsHelper[i]);
 			k++;
-			j++;
+			i++;
 		}
-	}
 	
+	}
+
+	}
 }
+	
