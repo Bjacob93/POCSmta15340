@@ -23,8 +23,11 @@ public class OutputClientHandler extends Thread {
 		System.out.println("Output handler called");
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 			sort(numbersCopy, stringsCopy);
 =======
+=======
+>>>>>>> parent of 40a2e98... Don't touch. It works now
 		try{
 			output = new PrintWriter(client.getOutputStream(), true);
 			
