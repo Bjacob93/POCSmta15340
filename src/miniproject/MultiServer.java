@@ -43,7 +43,9 @@ public class MultiServer {
             	System.out.println("Inputclient detected");
             	InputClientHandler handler = new InputClientHandler(client);
                 handler.start();
-
+                if(!strings.isEmpty()){
+                System.out.println(strings.get(0) + " " + strings.size());
+                }
                 
             	
             } else if (IOSwitch == false){

@@ -7,7 +7,7 @@ import java.util.*;
 
 public class OutputClientHandler extends Thread {
 	private Socket client;
-
+	private PrintWriter output;
 	
 	private static LinkedList<String> strings = MultiServer.strings;
 	private static LinkedList<Integer> numbers = MultiServer.numbers;
@@ -22,12 +22,25 @@ public class OutputClientHandler extends Thread {
 	
 		System.out.println("Output handler called");
 
+<<<<<<< HEAD
 			sort(numbersCopy, stringsCopy);
+=======
+		try{
+			output = new PrintWriter(client.getOutputStream(), true);
+			
+			sort(numbers, strings);
+>>>>>>> parent of 40a2e98... Don't touch. It works now
 			
 			for(int i = 0; i < numbersCopy.size(); i++){
 				System.out.println(stringsCopy.get(i)+ " " + numbersCopy.get(i));
 			}
 
+			
+		} catch(IOException ioEx){
+		//	System.out.println("IOException!");
+		//	ioEx.printStackTrace();
+		}
+		//finally {
 			try{
 				System.out.println("\n Closing connection...");
 				socket.close();
