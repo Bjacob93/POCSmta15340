@@ -29,6 +29,8 @@ public class OutputHandler extends Thread{
         Socket link = null;
         try {
             link = serverSocket.accept();
+            int swap;
+            String swapS;
             PrintWriter output = new PrintWriter(link.getOutputStream(), true);
             for (int i = 0; i < numbers.size() - 1; i++){
             	for(int j = 0; j < numbers.size() - i - 1; j++){
