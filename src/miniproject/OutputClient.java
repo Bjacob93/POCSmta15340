@@ -5,6 +5,9 @@ import java.util.*;
 
 public class OutputClient {
 	
+	private static LinkedList<String> strings = MultiServer.strings;
+	private static LinkedList<Integer> numbers = MultiServer.numbers;
+	
 	private static InetAddress host;
 	private static final int PORT = 1234;
 	public static void main(String[] args) {
