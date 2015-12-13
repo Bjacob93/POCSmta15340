@@ -7,7 +7,7 @@ import java.util.*;
 
 public class OutputClientHandler extends Thread {
 	private Socket client;
-	private PrintWriter output;
+
 	
 	private static LinkedList<String> strings = MultiServer.strings;
 	private static LinkedList<Integer> numbers = MultiServer.numbers;
@@ -20,21 +20,12 @@ public class OutputClientHandler extends Thread {
 	
 		System.out.println("Output handler called");
 
-		try{
-			output = new PrintWriter(client.getOutputStream(), true);
-			
 			sort(numbers, strings);
 			
 			for(int i = 0; i < numbers.size(); i++){
 				System.out.println(strings.get(i)+ " " + numbers.get(i));
 			}
 
-			
-		} catch(IOException ioEx){
-		//	System.out.println("IOException!");
-		//	ioEx.printStackTrace();
-		}
-		//finally {
 			try{
 				System.out.println("\n Closing connection...");
 				socket.close();
