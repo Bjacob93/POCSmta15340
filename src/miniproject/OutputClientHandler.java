@@ -6,15 +6,19 @@ import java.util.*;
 
 public class OutputClientHandler extends Thread {
 	private Socket client;
-	private Scanner input;
 	private PrintWriter output;
 	
 
-	public OutputClientHandler(Socket socket){
+	public OutputClientHandler(Socket socket, LinkedList<String> strings, LinkedList<Integer> numbers){
 		client = socket;
 		try{
-			input = new Scanner(client.getInputStream());
 			output = new PrintWriter(client.getOutputStream(), true);
+			sort(numbers, strings);
+			
+			for(int i = 0; i < numbers.size(); i++){
+				//Send the i'th word + " "
+				//Send the i'th number + ".\n"
+			}
 			
 		} catch(IOException ioEx){
 			System.out.println("IOException!");
@@ -22,17 +26,17 @@ public class OutputClientHandler extends Thread {
 		}
 		
 	}
-
-	private int[] numbers;
-	private String[] strings;
-	private int[] numbersHelper;
+	
+	LinkedList<Integer> numbers;
+	LinkedList<String> strings;
+	private int[] numbersHelper;;
 	private String[] stringsHelper;
 	
-	public void sort(int[] values){
+	public void sort(LinkedList<Integer> numbers , LinkedList<String> strings){
 		
-		this.numbers = values;
-		this.numbersHelper = new int[values.length];
-		mergeSort(0, values.length - 1);
+
+		this.numbersHelper = new int[numbers.size()];
+		mergeSort(0, numbers.size() - 1);
 	}
 	
 	private void mergeSort(int low, int high){
@@ -49,8 +53,8 @@ public class OutputClientHandler extends Thread {
 	private void merge(int low, int middle, int high){
 		
 		for(int i = low;i <= high; i++){
-			numbersHelper[i] = numbers[i];
-			stringsHelper[i] = strings[i];
+			numbersHelper[i] = numbers.get(i);
+			stringsHelper[i] = strings.get(i);
 		}
 		
 		int i = low;
@@ -60,19 +64,19 @@ public class OutputClientHandler extends Thread {
 		while(i <= middle && j <= high){
 			
 			if (numbersHelper[i] <= numbersHelper[j]){
-				numbers[k] = numbersHelper[i];
-				strings[k] = stringsHelper[i];
+				numbers.set(k, numbersHelper[i]);
+				strings.set(k, stringsHelper[i]);
 				i++;
 			} else {
-				numbers[k] = numbersHelper[j];
-				strings[k] = stringsHelper[j];
+				numbers.set(k, numbersHelper[j]);
+				strings.set(k, stringsHelper[j]);
 				j++;
 			}
 			k++;   
 		}
 		while(i <= middle){
-			numbers[k] = numbersHelper[i];
-			strings[k] = stringsHelper[i];
+			numbers.set(k, numbersHelper[j]);
+			strings.set(k, stringsHelper[i]);
 			k++;
 			j++;
 		}

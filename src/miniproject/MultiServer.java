@@ -5,10 +5,9 @@ import java.net.*;
 import java.util.*;
 
 public class MultiServer {
-    private static ServerSocket serverSocket;
+   	private static ServerSocket serverSocket;
     private static final int PORT = 1234;
-    
-    
+       
     @SuppressWarnings("resource")
 	public static void main(String[] args) throws IOException{
     	
@@ -46,18 +45,20 @@ public class MultiServer {
             } else if (IOSwitch == false){
             	
             	System.out.println("Outputclient detected");
-            	OutputClientHandler handler = new 	OutputClientHandler(client);
+            	OutputClientHandler handler = new OutputClientHandler(client, string, numbers);
             	handler.start();
             }
 
         } while(true);
     }
+    
+    
 
-
-	@SuppressWarnings("null")
-	public static void collectedWordsOfShiaLabeouf(String input) {
+	public static void TheCollectedWordsOfShiaLabeouf(String input) {
         LinkedList<String> strings = null;
         LinkedList<Integer> numbers = null;
+        
+        boolean wordFound = false;
         
         if(numbers.size() < 1){
         	numbers.addFirst(1);
@@ -67,11 +68,14 @@ public class MultiServer {
         	for(int i = 0; i < numbers.size(); i++){
         		if(input.equals(strings.get(i))){
         			numbers.set(i, numbers.get(i) + 1);
+        			wordFound = true;
         			break;
         		}
         	}
+        	if(wordFound == false){
+        		numbers.addLast(1);
+        		strings.addLast(input);
+        	}
         }      
-        
-	}
-
+  	}
 }
