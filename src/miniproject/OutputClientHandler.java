@@ -9,13 +9,16 @@ public class OutputClientHandler extends Thread {
 	private Scanner input;
 	private PrintWriter output;
 	
-	public OutputClientHandler(Socket socket){
 
+	public OutputClientHandler(Socket socket){
+		System.out.println("OutputClientHandler called");
 		client = socket;
 		try{
+			input = new Scanner(client.getInputStream());
 			output = new PrintWriter(client.getOutputStream(), true);	
 		} catch(IOException ioEx){
-			
+			System.out.println("IOException!");
+			ioEx.printStackTrace();
 		}
 		
 	}

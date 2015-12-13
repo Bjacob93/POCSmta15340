@@ -8,8 +8,6 @@ import java.util.*;
 
 public class InputClient2 {
 
-
-	
 	private static InetAddress host;
 	private static final int PORT = 1234;
 		

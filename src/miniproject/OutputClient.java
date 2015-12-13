@@ -6,7 +6,7 @@ import java.util.*;
 public class OutputClient extends Thread {
 	
 	private static InetAddress host;
-	private static final int PORT = 1235;
+	private static final int PORT = 1234;
 	public static void main(String[] args) {
         try {
             host = InetAddress.getLocalHost();
@@ -21,11 +21,12 @@ public class OutputClient extends Thread {
 private static void accessServer(){
 	
 	Socket link = null;
+	String bool = "false";
     try {
         link = new Socket(host, PORT);
         Scanner input = new Scanner(link.getInputStream());
         PrintWriter output = new PrintWriter(link.getOutputStream(), true);
-        output.print("false");
+        output.print(bool);
         System.out.print(input);
     }
     catch (IOException ioEx) {

@@ -8,6 +8,7 @@ public class MultiServer {
     private static ServerSocket serverSocket;
     private static final int PORT = 1234;
     
+    
     @SuppressWarnings("resource")
 	public static void main(String[] args) throws IOException{
     	
@@ -21,15 +22,19 @@ public class MultiServer {
             System.exit(1);
         }
 
+        String clientMessage;
+        boolean IOSwitch = false;
+        
         do{
         	System.out.println("Server is running");
             Socket client = serverSocket.accept();
             System.out.println("\nClient accepted\n");
             input = new Scanner(client.getInputStream());
-            boolean IOSwitch = input.nextBoolean();
-           // input.close();
-            
-            
+                   
+            if(input.hasNextBoolean()){
+            IOSwitch = input.nextBoolean();
+            }
+
             if(IOSwitch == true){
             	
             	System.out.println("Inputclient detected");
